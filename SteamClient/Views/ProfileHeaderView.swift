@@ -42,6 +42,8 @@ class ProfileHeaderView: UIView, ProfileHeaderViewProtocol {
     
     init() {
         super.init(frame: .zero)
+        self.backgroundColor = .clear
+        
         self.translatesAutoresizingMaskIntoConstraints = false
         
         self.setupImageView()

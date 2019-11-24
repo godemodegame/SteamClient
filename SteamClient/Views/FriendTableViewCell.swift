@@ -1,10 +1,11 @@
 import UIKit
 
-class GameTableViewCell: UITableViewCell {
+class FriendTableViewCell: UITableViewCell {
     lazy var imgView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.borderWidth = 2
         return imageView
     }()
     
@@ -19,14 +20,22 @@ class GameTableViewCell: UITableViewCell {
         return label
     }()
     
-    lazy var detaillabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = .gray
-        return label
-    }()
+    var state: Int = 0 {
+        didSet {
+            switch self.state {
+            case 1: self.stateColor = .blue
+            case 2: self.stateColor = .red
+            case 3, 4: self.stateColor = .orange
+            default: self.stateColor = .gray
+            }
+        }
+    }
+    
+    private var stateColor: UIColor = .gray {
+        didSet {
+            self.imgView.layer.borderColor = self.stateColor.cgColor
+        }
+    }
     
     override func layoutSubviews() {
         self.contentView.backgroundColor = .clear
@@ -35,20 +44,18 @@ class GameTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
         self.addSubview(self.imgView)
         self.addSubview(self.namelabel)
-        self.addSubview(self.detaillabel)
+        
         [self.imgView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
          self.imgView.topAnchor.constraint(equalTo: self.topAnchor),
-         self.imgView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-         self.imgView.widthAnchor.constraint(equalToConstant: 180),
+         self.imgView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -0.5),
+         self.imgView.widthAnchor.constraint(equalToConstant: 80),
          
-         self.namelabel.leadingAnchor.constraint(equalTo: self.imgView.trailingAnchor),
+         self.namelabel.leadingAnchor.constraint(equalTo: self.imgView.trailingAnchor, constant: 5),
          self.namelabel.topAnchor.constraint(equalTo: self.topAnchor),
          self.namelabel.trailingAnchor.constraint(lessThanOrEqualTo: self.trailingAnchor),
-
-         self.detaillabel.leadingAnchor.constraint(equalTo: self.namelabel.leadingAnchor),
-         self.detaillabel.topAnchor.constraint(equalTo: self.namelabel.bottomAnchor)
         ].forEach { $0.isActive = true }
     }
 }

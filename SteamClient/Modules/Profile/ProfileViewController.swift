@@ -1,7 +1,8 @@
 import UIKit
 
 protocol ProfileViewProtocol: class {
-    var tableViewModel: [OwnedGames.Response.Game]? { get set }
+    var tableViewModel: [GameViewModel]? { get set }
+    func setupBackground()
     func setupLoginButton()
     func hideLoginButton()
     func setupHeader()
@@ -13,11 +14,11 @@ protocol ProfileViewProtocol: class {
 }
 
 class ProfileViewController: UIViewController {
-        
+    
     var presenter: ProfilePresenterProtocol!
     let configurator: ProfileConfiguratorProtocol = ProfileConfigurator()
     
-    var tableViewModel: [OwnedGames.Response.Game]? {
+    var tableViewModel: [GameViewModel]? {
         didSet {
             self.tableView.reloadData()
         }
@@ -80,6 +81,14 @@ class ProfileViewController: UIViewController {
 // MARK: -ProfileViewProtocol
 
 extension ProfileViewController: ProfileViewProtocol {
+    func setupBackground() {
+        if #available(iOS 13.0, *) {
+            self.view.backgroundColor = UIColor.systemBackground
+        } else {
+            self.view.backgroundColor = UIColor.white
+        }
+    }
+    
     func setupFailGames() {
         self.view.addSubview(self.gameFailLabel)
         self.view.addSubview(self.reloadButton)
@@ -149,11 +158,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! GameTableViewCell
         if let viewModel = self.tableViewModel?[indexPath.item] {
-            if let url = URL(string: "http://media.steampowered.com/steamcommunity/public/images/apps/\(viewModel.appid)/\(viewModel.img_logo_url).jpg") {
+            if let url = viewModel.imageUrl {
                 cell.imgView.load(url: url)
             }
             cell.namelabel.text = viewModel.name
-            cell.detaillabel.text = "\(viewModel.playtime_forever/60) h"
+            cell.detaillabel.text = viewModel.playedHours
         }
         return cell
     }

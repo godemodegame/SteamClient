@@ -6,9 +6,14 @@ class TabBarController: UITabBarController {
         
         let profileViewController = ProfileViewController()
         profileViewController.tabBarItem.title = "Profile"
-        profileViewController.tabBarItem.image = UIImage(named: "User")
+        profileViewController.tabBarItem.image = UIImage(named: "user")
         
-        self.viewControllers = [UINavigationController(rootViewController: profileViewController)]
+        let friendsViewController = FriendsViewController()
+        friendsViewController.tabBarItem.title = "Friends"
+        friendsViewController.tabBarItem.image = UIImage(named: "users")
+        
+        self.viewControllers = [UINavigationController(rootViewController: profileViewController),
+                                UINavigationController(rootViewController: friendsViewController)]
         
         self.view.tintColor = .red
     }

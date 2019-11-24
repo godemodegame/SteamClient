@@ -22,6 +22,7 @@ class ProfilePresenter: ProfilePresenterProtocol {
     }
     
     func configureView() {
+        self.view.setupBackground()
         self.interactor.fetchUser()
     }
     
@@ -44,7 +45,10 @@ class ProfilePresenter: ProfilePresenterProtocol {
     }
     
     func set(tableViewModel: [OwnedGames.Response.Game]?) {
-        self.view.tableViewModel = tableViewModel
+        self.view.tableViewModel = tableViewModel?.map { GameViewModel(appId: $0.appid,
+                                                                       hash: $0.img_logo_url,
+                                                                       name: $0.name,
+                                                                       played: $0.playtime_forever)}
     }
     
     func gamesFailed() {
