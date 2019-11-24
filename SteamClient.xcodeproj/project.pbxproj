@@ -7,23 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1B9779F2388758A004B906B /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B9779E2388758A004B906B /* LoginPresenter.swift */; };
+		C1B977A123887626004B906B /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977A023887626004B906B /* LoginInteractor.swift */; };
+		C1B977A3238876A8004B906B /* LoginConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977A2238876A8004B906B /* LoginConfigurator.swift */; };
+		C1B977A5238876E9004B906B /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977A4238876E9004B906B /* LoginRouter.swift */; };
+		C1B977A72389149A004B906B /* SteamUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977A62389149A004B906B /* SteamUser.swift */; };
+		C1B977A9238914E6004B906B /* String+SteamId.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977A8238914E6004B906B /* String+SteamId.swift */; };
+		C1B977AB23891541004B906B /* SteamVanity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977AA23891541004B906B /* SteamVanity.swift */; };
+		C1B977AD23891569004B906B /* SteamVanityResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977AC23891569004B906B /* SteamVanityResponse.swift */; };
 		C1E8297723885925004F2DA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8297623885925004F2DA3 /* AppDelegate.swift */; };
 		C1E8297923885925004F2DA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8297823885925004F2DA3 /* SceneDelegate.swift */; };
-		C1E8297B23885925004F2DA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8297A23885925004F2DA3 /* ViewController.swift */; };
-		C1E8297E23885925004F2DA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1E8297C23885925004F2DA3 /* Main.storyboard */; };
+		C1E8297B23885925004F2DA3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8297A23885925004F2DA3 /* LoginViewController.swift */; };
 		C1E8298023885925004F2DA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1E8297F23885925004F2DA3 /* Assets.xcassets */; };
 		C1E8298323885925004F2DA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1E8298123885925004F2DA3 /* LaunchScreen.storyboard */; };
+		C1E8298E23886BD1004F2DA3 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = C1E8298D23886BD1004F2DA3 /* Podfile */; };
+		F291D029FCAB3BF86EB8A97F /* libPods-SteamClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C0D08F3FC978C91561C719 /* libPods-SteamClient.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2245D8C09485FA676C5D01FE /* Pods-SteamClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteamClient.debug.xcconfig"; path = "Target Support Files/Pods-SteamClient/Pods-SteamClient.debug.xcconfig"; sourceTree = "<group>"; };
+		3BCA2C22DDA9F1DF44814F01 /* Pods-SteamClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteamClient.release.xcconfig"; path = "Target Support Files/Pods-SteamClient/Pods-SteamClient.release.xcconfig"; sourceTree = "<group>"; };
+		B1C0D08F3FC978C91561C719 /* libPods-SteamClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SteamClient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1B9779E2388758A004B906B /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		C1B977A023887626004B906B /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		C1B977A2238876A8004B906B /* LoginConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginConfigurator.swift; sourceTree = "<group>"; };
+		C1B977A4238876E9004B906B /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		C1B977A62389149A004B906B /* SteamUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamUser.swift; sourceTree = "<group>"; };
+		C1B977A8238914E6004B906B /* String+SteamId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+SteamId.swift"; sourceTree = "<group>"; };
+		C1B977AA23891541004B906B /* SteamVanity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamVanity.swift; sourceTree = "<group>"; };
+		C1B977AC23891569004B906B /* SteamVanityResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamVanityResponse.swift; sourceTree = "<group>"; };
 		C1E8297323885925004F2DA3 /* SteamClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SteamClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1E8297623885925004F2DA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1E8297823885925004F2DA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C1E8297A23885925004F2DA3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C1E8297D23885925004F2DA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C1E8297A23885925004F2DA3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C1E8297F23885925004F2DA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1E8298223885925004F2DA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1E8298423885925004F2DA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1E8298D23886BD1004F2DA3 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +51,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F291D029FCAB3BF86EB8A97F /* libPods-SteamClient.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0AA46AD4E1842F79498192B6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B1C0D08F3FC978C91561C719 /* libPods-SteamClient.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		90D914F5AFDC990E1538B05E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2245D8C09485FA676C5D01FE /* Pods-SteamClient.debug.xcconfig */,
+				3BCA2C22DDA9F1DF44814F01 /* Pods-SteamClient.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C1E8296A23885925004F2DA3 = {
 			isa = PBXGroup;
 			children = (
+				C1E8298D23886BD1004F2DA3 /* Podfile */,
 				C1E8297523885925004F2DA3 /* SteamClient */,
 				C1E8297423885925004F2DA3 /* Products */,
+				90D914F5AFDC990E1538B05E /* Pods */,
+				0AA46AD4E1842F79498192B6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +99,28 @@
 			children = (
 				C1E8297623885925004F2DA3 /* AppDelegate.swift */,
 				C1E8297823885925004F2DA3 /* SceneDelegate.swift */,
-				C1E8297A23885925004F2DA3 /* ViewController.swift */,
-				C1E8297C23885925004F2DA3 /* Main.storyboard */,
+				C1E8298A23885E3F004F2DA3 /* Login */,
+				C1B977A62389149A004B906B /* SteamUser.swift */,
+				C1B977A8238914E6004B906B /* String+SteamId.swift */,
+				C1B977AA23891541004B906B /* SteamVanity.swift */,
+				C1B977AC23891569004B906B /* SteamVanityResponse.swift */,
 				C1E8297F23885925004F2DA3 /* Assets.xcassets */,
 				C1E8298123885925004F2DA3 /* LaunchScreen.storyboard */,
 				C1E8298423885925004F2DA3 /* Info.plist */,
 			);
 			path = SteamClient;
+			sourceTree = "<group>";
+		};
+		C1E8298A23885E3F004F2DA3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C1E8297A23885925004F2DA3 /* LoginViewController.swift */,
+				C1B9779E2388758A004B906B /* LoginPresenter.swift */,
+				C1B977A023887626004B906B /* LoginInteractor.swift */,
+				C1B977A2238876A8004B906B /* LoginConfigurator.swift */,
+				C1B977A4238876E9004B906B /* LoginRouter.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +130,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C1E8298723885925004F2DA3 /* Build configuration list for PBXNativeTarget "SteamClient" */;
 			buildPhases = (
+				CC43750F6DD121E106F08914 /* [CP] Check Pods Manifest.lock */,
 				C1E8296F23885925004F2DA3 /* Sources */,
 				C1E8297023885925004F2DA3 /* Frameworks */,
 				C1E8297123885925004F2DA3 /* Resources */,
@@ -125,21 +182,54 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1E8298E23886BD1004F2DA3 /* Podfile in Resources */,
 				C1E8298323885925004F2DA3 /* LaunchScreen.storyboard in Resources */,
 				C1E8298023885925004F2DA3 /* Assets.xcassets in Resources */,
-				C1E8297E23885925004F2DA3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CC43750F6DD121E106F08914 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SteamClient-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C1E8296F23885925004F2DA3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1E8297B23885925004F2DA3 /* ViewController.swift in Sources */,
+				C1B977A3238876A8004B906B /* LoginConfigurator.swift in Sources */,
+				C1B977AB23891541004B906B /* SteamVanity.swift in Sources */,
+				C1B9779F2388758A004B906B /* LoginPresenter.swift in Sources */,
+				C1E8297B23885925004F2DA3 /* LoginViewController.swift in Sources */,
+				C1B977AD23891569004B906B /* SteamVanityResponse.swift in Sources */,
+				C1B977A9238914E6004B906B /* String+SteamId.swift in Sources */,
+				C1B977A72389149A004B906B /* SteamUser.swift in Sources */,
 				C1E8297723885925004F2DA3 /* AppDelegate.swift in Sources */,
+				C1B977A123887626004B906B /* LoginInteractor.swift in Sources */,
+				C1B977A5238876E9004B906B /* LoginRouter.swift in Sources */,
 				C1E8297923885925004F2DA3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +237,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C1E8297C23885925004F2DA3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C1E8297D23885925004F2DA3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C1E8298123885925004F2DA3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,11 +364,13 @@
 		};
 		C1E8298823885925004F2DA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2245D8C09485FA676C5D01FE /* Pods-SteamClient.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N9SGQL8822;
 				INFOPLIST_FILE = SteamClient/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -294,17 +378,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = gmg.SteamClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		C1E8298923885925004F2DA3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3BCA2C22DDA9F1DF44814F01 /* Pods-SteamClient.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N9SGQL8822;
 				INFOPLIST_FILE = SteamClient/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,7 +398,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = gmg.SteamClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
