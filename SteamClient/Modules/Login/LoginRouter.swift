@@ -4,7 +4,7 @@ protocol LoginRouterProtocol: class {
     func closeCurrentViewController()
 }
 
-class LoginRouter: LoginRouterProtocol {
+final class LoginRouter: LoginRouterProtocol {
     weak var viewController: LoginViewController!
     
     required init(viewController: LoginViewController) {

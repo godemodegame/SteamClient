@@ -11,10 +11,18 @@
 		C1B977A123887626004B906B /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977A023887626004B906B /* LoginInteractor.swift */; };
 		C1B977A3238876A8004B906B /* LoginConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977A2238876A8004B906B /* LoginConfigurator.swift */; };
 		C1B977A5238876E9004B906B /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977A4238876E9004B906B /* LoginRouter.swift */; };
-		C1B977A72389149A004B906B /* SteamUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977A62389149A004B906B /* SteamUser.swift */; };
-		C1B977A9238914E6004B906B /* String+SteamId.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977A8238914E6004B906B /* String+SteamId.swift */; };
-		C1B977AB23891541004B906B /* SteamVanity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977AA23891541004B906B /* SteamVanity.swift */; };
-		C1B977AD23891569004B906B /* SteamVanityResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977AC23891569004B906B /* SteamVanityResponse.swift */; };
+		C1B977AF238A92F8004B906B /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977AE238A92F8004B906B /* StorageService.swift */; };
+		C1B977B1238A9728004B906B /* String+base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977B0238A9728004B906B /* String+base64.swift */; };
+		C1B977B3238A9898004B906B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977B2238A9898004B906B /* NetworkService.swift */; };
+		C1B977B5238AA855004B906B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977B4238AA855004B906B /* ProfileViewController.swift */; };
+		C1B977B8238AA8E7004B906B /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977B7238AA8E7004B906B /* ProfilePresenter.swift */; };
+		C1B977BA238AA93F004B906B /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977B9238AA93F004B906B /* ProfileInteractor.swift */; };
+		C1B977BC238AA9A4004B906B /* ProfileConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977BB238AA9A4004B906B /* ProfileConfigurator.swift */; };
+		C1B977BE238AA9F0004B906B /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977BD238AA9F0004B906B /* ProfileRouter.swift */; };
+		C1B977C0238ACCC7004B906B /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977BF238ACCC7004B906B /* ProfileHeaderView.swift */; };
+		C1B977C6238ACEC9004B906B /* UIImageView+network.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977C5238ACEC9004B906B /* UIImageView+network.swift */; };
+		C1B977C8238B00C3004B906B /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977C7238B00C3004B906B /* GameTableViewCell.swift */; };
+		C1B977CA238B15F4004B906B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B977C9238B15F4004B906B /* TabBarController.swift */; };
 		C1E8297723885925004F2DA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8297623885925004F2DA3 /* AppDelegate.swift */; };
 		C1E8297923885925004F2DA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8297823885925004F2DA3 /* SceneDelegate.swift */; };
 		C1E8297B23885925004F2DA3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8297A23885925004F2DA3 /* LoginViewController.swift */; };
@@ -32,10 +40,18 @@
 		C1B977A023887626004B906B /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		C1B977A2238876A8004B906B /* LoginConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginConfigurator.swift; sourceTree = "<group>"; };
 		C1B977A4238876E9004B906B /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
-		C1B977A62389149A004B906B /* SteamUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamUser.swift; sourceTree = "<group>"; };
-		C1B977A8238914E6004B906B /* String+SteamId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+SteamId.swift"; sourceTree = "<group>"; };
-		C1B977AA23891541004B906B /* SteamVanity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamVanity.swift; sourceTree = "<group>"; };
-		C1B977AC23891569004B906B /* SteamVanityResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamVanityResponse.swift; sourceTree = "<group>"; };
+		C1B977AE238A92F8004B906B /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		C1B977B0238A9728004B906B /* String+base64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+base64.swift"; sourceTree = "<group>"; };
+		C1B977B2238A9898004B906B /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		C1B977B4238AA855004B906B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C1B977B7238AA8E7004B906B /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		C1B977B9238AA93F004B906B /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		C1B977BB238AA9A4004B906B /* ProfileConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileConfigurator.swift; sourceTree = "<group>"; };
+		C1B977BD238AA9F0004B906B /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
+		C1B977BF238ACCC7004B906B /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		C1B977C5238ACEC9004B906B /* UIImageView+network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+network.swift"; sourceTree = "<group>"; };
+		C1B977C7238B00C3004B906B /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
+		C1B977C9238B15F4004B906B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		C1E8297323885925004F2DA3 /* SteamClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SteamClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1E8297623885925004F2DA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1E8297823885925004F2DA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +91,54 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C1B977B6238AA8C8004B906B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C1B977B4238AA855004B906B /* ProfileViewController.swift */,
+				C1B977B7238AA8E7004B906B /* ProfilePresenter.swift */,
+				C1B977B9238AA93F004B906B /* ProfileInteractor.swift */,
+				C1B977BB238AA9A4004B906B /* ProfileConfigurator.swift */,
+				C1B977BD238AA9F0004B906B /* ProfileRouter.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		C1B977C1238ACCD7004B906B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C1B977AE238A92F8004B906B /* StorageService.swift */,
+				C1B977B2238A9898004B906B /* NetworkService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C1B977C2238ACCE4004B906B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C1B977BF238ACCC7004B906B /* ProfileHeaderView.swift */,
+				C1B977C7238B00C3004B906B /* GameTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C1B977C3238ACCEE004B906B /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				C1B977B6238AA8C8004B906B /* Profile */,
+				C1E8298A23885E3F004F2DA3 /* Login */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		C1B977C4238ACD13004B906B /* Healpers */ = {
+			isa = PBXGroup;
+			children = (
+				C1B977B0238A9728004B906B /* String+base64.swift */,
+				C1B977C5238ACEC9004B906B /* UIImageView+network.swift */,
+			);
+			path = Healpers;
+			sourceTree = "<group>";
+		};
 		C1E8296A23885925004F2DA3 = {
 			isa = PBXGroup;
 			children = (
@@ -99,11 +163,11 @@
 			children = (
 				C1E8297623885925004F2DA3 /* AppDelegate.swift */,
 				C1E8297823885925004F2DA3 /* SceneDelegate.swift */,
-				C1E8298A23885E3F004F2DA3 /* Login */,
-				C1B977A62389149A004B906B /* SteamUser.swift */,
-				C1B977A8238914E6004B906B /* String+SteamId.swift */,
-				C1B977AA23891541004B906B /* SteamVanity.swift */,
-				C1B977AC23891569004B906B /* SteamVanityResponse.swift */,
+				C1B977C9238B15F4004B906B /* TabBarController.swift */,
+				C1B977C3238ACCEE004B906B /* Modules */,
+				C1B977C2238ACCE4004B906B /* Views */,
+				C1B977C1238ACCD7004B906B /* Services */,
+				C1B977C4238ACD13004B906B /* Healpers */,
 				C1E8297F23885925004F2DA3 /* Assets.xcassets */,
 				C1E8298123885925004F2DA3 /* LaunchScreen.storyboard */,
 				C1E8298423885925004F2DA3 /* Info.plist */,
@@ -220,16 +284,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1B977B3238A9898004B906B /* NetworkService.swift in Sources */,
 				C1B977A3238876A8004B906B /* LoginConfigurator.swift in Sources */,
-				C1B977AB23891541004B906B /* SteamVanity.swift in Sources */,
+				C1B977B8238AA8E7004B906B /* ProfilePresenter.swift in Sources */,
 				C1B9779F2388758A004B906B /* LoginPresenter.swift in Sources */,
 				C1E8297B23885925004F2DA3 /* LoginViewController.swift in Sources */,
-				C1B977AD23891569004B906B /* SteamVanityResponse.swift in Sources */,
-				C1B977A9238914E6004B906B /* String+SteamId.swift in Sources */,
-				C1B977A72389149A004B906B /* SteamUser.swift in Sources */,
 				C1E8297723885925004F2DA3 /* AppDelegate.swift in Sources */,
 				C1B977A123887626004B906B /* LoginInteractor.swift in Sources */,
+				C1B977AF238A92F8004B906B /* StorageService.swift in Sources */,
+				C1B977C0238ACCC7004B906B /* ProfileHeaderView.swift in Sources */,
+				C1B977B1238A9728004B906B /* String+base64.swift in Sources */,
+				C1B977BE238AA9F0004B906B /* ProfileRouter.swift in Sources */,
+				C1B977C8238B00C3004B906B /* GameTableViewCell.swift in Sources */,
+				C1B977C6238ACEC9004B906B /* UIImageView+network.swift in Sources */,
+				C1B977CA238B15F4004B906B /* TabBarController.swift in Sources */,
+				C1B977B5238AA855004B906B /* ProfileViewController.swift in Sources */,
+				C1B977BA238AA93F004B906B /* ProfileInteractor.swift in Sources */,
 				C1B977A5238876E9004B906B /* LoginRouter.swift in Sources */,
+				C1B977BC238AA9A4004B906B /* ProfileConfigurator.swift in Sources */,
 				C1E8297923885925004F2DA3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,11 +8,16 @@ protocol LoginPresenterProtocol: class {
     func idFound()
 }
 
-class LoginPresenter: LoginPresenterProtocol {
+protocol LoginDelegate {
+    func finishedAuthorization()
+}
+
+final class LoginPresenter: LoginPresenterProtocol {
     
     weak var view: LoginViewProtocol!
     var interactor: LoginInteractorProtocol!
     var router: LoginRouterProtocol!
+    var delegate: LoginDelegate?
     
     required init(view: LoginViewProtocol) {
         self.view = view
@@ -28,6 +33,7 @@ class LoginPresenter: LoginPresenterProtocol {
     }
     
     func idFound() {
+        self.delegate?.finishedAuthorization()
         self.router.closeCurrentViewController()
     }
     

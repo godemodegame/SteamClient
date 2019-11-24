@@ -1,11 +1,11 @@
 import UIKit
 
 protocol LoginConfiguratorProtocol: class {
-    func configure(with viewController: LoginViewController)
+    func configure(with viewController: LoginViewController, delegate: LoginDelegate?)
 }
 
-class LoginConfigurator: LoginConfiguratorProtocol {
-    func configure(with viewController: LoginViewController) {
+final class LoginConfigurator: LoginConfiguratorProtocol {
+    func configure(with viewController: LoginViewController, delegate: LoginDelegate?) {
         let presenter = LoginPresenter(view: viewController)
         let interactor = LoginInteractor(presenter: presenter)
         let router = LoginRouter(viewController: viewController)
@@ -13,5 +13,6 @@ class LoginConfigurator: LoginConfiguratorProtocol {
         viewController.presenter = presenter
         presenter.interactor = interactor
         presenter.router = router
+        presenter.delegate = delegate
     }
 }

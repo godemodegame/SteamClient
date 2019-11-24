@@ -28,12 +28,20 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configurator.configure(with: self)
         self.presenter.configureView()
     }
     
     @objc private func cancelButtonTapped() {
         self.presenter.closeButtonClicked()
+    }
+    
+    init(delegate: LoginDelegate?) {
+        super.init(nibName: nil, bundle: nil)
+        self.configurator.configure(with: self, delegate: delegate)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -56,10 +64,9 @@ extension LoginViewController: LoginViewProtocol {
 
 extension LoginViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        
         guard let url = navigationAction.request.url else { return }
         let isSuccess = self.presenter.isFetched(url: url)
-        
+
         if isSuccess {
             decisionHandler(.cancel)
         } else {
