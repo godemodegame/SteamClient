@@ -3,6 +3,7 @@ import Foundation
 protocol FriendsPresenterProtocol: class {
     func configureView()
     func append(_ user: PlayerSummaries.Response.Player)
+    func tappedRow(with friend: Friend)
 }
 
 final class FriendsPresenter: FriendsPresenterProtocol {
@@ -24,5 +25,9 @@ final class FriendsPresenter: FriendsPresenterProtocol {
                                           littleAvatar: user.avatarmedium,
                                           fullAvatar: user.avatarfull,
                                           state: user.personastate))
+    }
+    
+    func tappedRow(with friend: Friend) {
+        self.router.openDetail(friend: friend)
     }
 }

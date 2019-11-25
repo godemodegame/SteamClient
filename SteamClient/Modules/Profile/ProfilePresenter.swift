@@ -1,7 +1,8 @@
 import Foundation
 
 protocol ProfilePresenterProtocol: class {
-    func configureView()
+    func configureUserView()
+    func configureFriendView(profile: Friend)
     func setLoginButton()
     func loginButtonTapped()
     func show(profile: PlayerSummaries.Response.Player)
@@ -16,14 +17,23 @@ class ProfilePresenter: ProfilePresenterProtocol {
     var interactor: ProfileInteractorProtocol!
     var router: ProfileRouterProtocol!
     var headerView: ProfileHeaderViewProtocol?
-    
+
     required init(view: ProfileViewProtocol) {
         self.view = view
     }
     
-    func configureView() {
+    func configureUserView() {
         self.view.setupBackground()
         self.interactor.fetchUser()
+    }
+    
+    func configureFriendView(profile: Friend) {
+        self.view.setupBackground()
+        self.view.setupHeader()
+        self.headerView?.name = profile.name
+        self.headerView?.imageUrl = profile.fullAvatar
+        self.headerView?.state = profile.state
+        self.view.setupTableView()
     }
     
     func show(profile: PlayerSummaries.Response.Player) {

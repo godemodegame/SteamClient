@@ -64,9 +64,6 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.configurator.configure(with: self)
-        self.presenter.configureView()
     }
     
     @objc func loginButtonTapped() {
@@ -75,6 +72,26 @@ class ProfileViewController: UIViewController {
     
     @objc func reloadButtonTapped() {
         self.presenter.reload()
+    }
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        self.configurator.configure(with: self)
+        self.presenter.configureUserView()
+    }
+    
+    init(friend: Friend? = nil) {
+        super.init(nibName: nil, bundle: nil)
+        self.configurator.configure(with: self)
+        if let friend = friend {
+            self.presenter.configureFriendView(profile: friend)
+        } else {
+            self.presenter.configureUserView()
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
