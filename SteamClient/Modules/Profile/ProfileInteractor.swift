@@ -1,8 +1,10 @@
 import Foundation
 
 protocol ProfileInteractorProtocol: class {
-    func fetchUser()
-    func fetchOwnedGames()
+    func fetchUser(id: String, completion: @escaping (User?) -> Void)
+    func fetchOwnedGames(id: String)
+    func save(user: User)
+    func loadUser() -> User?
 }
 
 final class ProfileInteractor: ProfileInteractorProtocol {
@@ -15,26 +17,32 @@ final class ProfileInteractor: ProfileInteractorProtocol {
         self.presenter = presenter
     }
     
-    func fetchUser() {
-        if let user = self.storageService.loadUser() {
-            self.networkService.getPlayerSummaries(id: user) { userResponse in
-                if let user = userResponse {
-                    self.presenter.show(profile: user)
-                }
+    func save(user: User) {
+        self.storageService.save(user: user)
+    }
+    
+    func loadUser() -> User? {
+        self.storageService.loadUser()
+    }
+    
+    func fetchUser(id: String, completion: @escaping (User?) -> Void) {
+        self.networkService.getPlayerSummaries(id: id) { userResponse in
+            if let user = userResponse {
+                completion(User(steamId: user.steamid,
+                                name: user.personaname,
+                                littleAvatar: user.avatar,
+                                fullAvatar: user.avatarfull,
+                                state: user.personastate))
             }
-        } else {
-            self.presenter.setLoginButton()
         }
     }
     
-    func fetchOwnedGames() {
-        if let user = self.storageService.loadUser() {
-            self.networkService.getOwnedGame(user: user) { ownedGamesResponse in
-                if ownedGamesResponse == nil {
-                    self.presenter.gamesFailed()
-                }
-                self.presenter.set(tableViewModel: ownedGamesResponse?.games)
+    func fetchOwnedGames(id: String) {
+        self.networkService.getOwnedGame(user: id) { ownedGamesResponse in
+            if ownedGamesResponse == nil {
+                self.presenter.gamesFailed()
             }
+            self.presenter.set(tableViewModel: ownedGamesResponse?.games)
         }
     }
 }

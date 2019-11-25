@@ -26,8 +26,12 @@ final class LoginInteractor: LoginInteractorProtocol {
             let vanityId = urlComponents[4]
             self.networkService.resolve(vanityUrl: vanityId) { [weak self] (response) in
                 guard let response = response else { return }
-                self?.storageService.save(userId: response.steamid)
-                self?.presenter.idFound()
+//                self?.storageService.save(user: User(steamId: response.steamid,
+//                                                     name: nil,
+//                                                     littleAvatar: nil,
+//                                                     fullAvatar: nil,
+//                                                     state: nil))
+                self?.presenter.found(id: response.steamid)
             }
             return true
         }

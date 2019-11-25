@@ -1,13 +1,13 @@
 import UIKit
 
 protocol FriendsViewProtocol: class {
-    var viewModel: [Friend] { get set }
+    var viewModel: [User] { get set }
     func setupCell()
 }
 
 class FriendsViewController: UITableViewController {
     
-    var viewModel: [Friend] = [] {
+    var viewModel: [User] = [] {
         didSet {
             self.tableView.reloadData()
         }
@@ -33,8 +33,10 @@ class FriendsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "friendCell", for: indexPath) as! FriendTableViewCell
         let friend = viewModel[indexPath.item]
         cell.namelabel.text = friend.name
-        cell.imgView.load(url: friend.littleAvatar)
-        cell.state = friend.state
+        if let url = friend.littleAvatar {
+            cell.imgView.load(url: url)
+        }
+        cell.state = friend.state ?? 0
         return cell
     }
     

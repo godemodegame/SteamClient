@@ -4,6 +4,7 @@ protocol ProfileHeaderViewProtocol {
     var name: String? { get set }
     var imageUrl: URL? { get set }
     var state: Int { get set }
+    var gamesCount: Int? { get set }
 }
 
 class ProfileHeaderView: UIView, ProfileHeaderViewProtocol {
@@ -18,11 +19,35 @@ class ProfileHeaderView: UIView, ProfileHeaderViewProtocol {
     var state: Int = 0 {
         didSet {
             switch self.state {
-            case 1: self.stateColor = .blue
-            case 2: self.stateColor = .red
-            case 3, 4: self.stateColor = .orange
+            case 0:
+                self.stateLabel.text = "Offline"
+                self.stateColor = .gray
+            case 1:
+                self.stateLabel.text = "Online"
+                self.stateColor = .blue
+            case 2:
+                self.stateLabel.text = "Busy"
+                self.stateColor = .red
+            case 3:
+                self.stateColor = .orange
+                self.stateLabel.text = "Away"
+            case 4:
+                self.stateColor = .blue
+                self.stateLabel.text = "Snooze"
+            case 5:
+                self.stateColor = .blue
+                self.stateLabel.text = "Looking to trade"
+            case 6:
+                self.stateColor = .green
+                self.stateLabel.text = "Looking to play"
             default: self.stateColor = .gray
             }
+        }
+    }
+    
+    var gamesCount: Int? {
+        didSet {
+            self.gamesCountLabel.text = "Total games: \(self.gamesCount ?? 0)"
         }
     }
     
@@ -34,6 +59,8 @@ class ProfileHeaderView: UIView, ProfileHeaderViewProtocol {
     
     let imageView = UIImageView()
     let nameLabel = UILabel()
+    let stateLabel = UILabel()
+    let gamesCountLabel = UILabel()
     var stateColor: UIColor? {
         didSet {
             self.imageView.layer.borderColor = self.stateColor?.cgColor
@@ -47,10 +74,34 @@ class ProfileHeaderView: UIView, ProfileHeaderViewProtocol {
         self.translatesAutoresizingMaskIntoConstraints = false
         
         self.setupImageView()
-        self.setupLabel()
+        self.setupNameLabel()
+        self.setupStateLabel()
+        self.setupGamesCount()
     }
     
-    private func setupLabel() {
+    private func setupGamesCount() {
+        self.gamesCountLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.gamesCountLabel.textColor = .gray
+        self.addSubview(self.gamesCountLabel)
+        
+        [
+            self.gamesCountLabel.leadingAnchor.constraint(equalTo: self.imageView.trailingAnchor, constant: 10),
+            self.gamesCountLabel.topAnchor.constraint(equalTo: self.stateLabel.bottomAnchor, constant: 5)
+            ].forEach { $0.isActive = true }
+    }
+    
+    private func setupStateLabel() {
+        self.stateLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.stateLabel.textColor = .gray
+        self.addSubview(self.stateLabel)
+        
+        [
+            self.stateLabel.leadingAnchor.constraint(equalTo: self.imageView.trailingAnchor, constant: 10),
+            self.stateLabel.topAnchor.constraint(equalTo: self.nameLabel.bottomAnchor, constant: 5)
+            ].forEach { $0.isActive = true }
+    }
+    
+    private func setupNameLabel() {
         self.nameLabel.translatesAutoresizingMaskIntoConstraints = false
         self.nameLabel.font = UIFont.boldSystemFont(ofSize: 20)
         self.addSubview(self.nameLabel)

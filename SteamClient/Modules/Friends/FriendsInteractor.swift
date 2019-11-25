@@ -15,8 +15,8 @@ final class FriendsInteractor: FriendsInteractorProtocol {
     }
     
     func fetchFriends() {
-        if let id = storageService.loadUser() {
-            self.networkService.getFriendsList(user: id) { friends in
+        if let user = storageService.loadUser() {
+            self.networkService.getFriendsList(user: user.steamId) { friends in
                 friends?.forEach {
                     self.networkService.getPlayerSummaries(id: $0.steamid) { user in
                         if let user = user {

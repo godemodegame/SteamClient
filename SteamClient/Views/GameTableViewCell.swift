@@ -4,6 +4,8 @@ class GameTableViewCell: UITableViewCell {
     lazy var imgView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 5
+        imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -43,7 +45,7 @@ class GameTableViewCell: UITableViewCell {
          self.imgView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
          self.imgView.widthAnchor.constraint(equalToConstant: 180),
          
-         self.namelabel.leadingAnchor.constraint(equalTo: self.imgView.trailingAnchor),
+         self.namelabel.leadingAnchor.constraint(equalTo: self.imgView.trailingAnchor, constant: 3),
          self.namelabel.topAnchor.constraint(equalTo: self.topAnchor),
          self.namelabel.trailingAnchor.constraint(lessThanOrEqualTo: self.trailingAnchor),
 

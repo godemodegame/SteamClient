@@ -2,10 +2,10 @@ import Foundation
 
 protocol ProfilePresenterProtocol: class {
     func configureUserView()
-    func configureFriendView(profile: Friend)
+    func configureFriendView(user: User)
     func setLoginButton()
     func loginButtonTapped()
-    func show(profile: PlayerSummaries.Response.Player)
+    func show(user: User)
     func set(tableViewModel: [OwnedGames.Response.Game]?)
     func gamesFailed()
     func reload()
@@ -17,31 +17,41 @@ class ProfilePresenter: ProfilePresenterProtocol {
     var interactor: ProfileInteractorProtocol!
     var router: ProfileRouterProtocol!
     var headerView: ProfileHeaderViewProtocol?
-
+    
     required init(view: ProfileViewProtocol) {
         self.view = view
     }
     
     func configureUserView() {
         self.view.setupBackground()
-        self.interactor.fetchUser()
+        if let user = self.interactor.loadUser() {
+            self.show(user: user)
+            self.interactor.fetchUser(id: user.steamId) { user in
+                if let user = user {
+                    self.show(user: user)
+                }
+            }
+        } else {
+            self.setLoginButton()
+        }
     }
     
-    func configureFriendView(profile: Friend) {
+    func configureFriendView(user: User) {
         self.view.setupBackground()
         self.view.setupHeader()
-        self.headerView?.name = profile.name
-        self.headerView?.imageUrl = profile.fullAvatar
-        self.headerView?.state = profile.state
+        self.headerView?.name = user.name
+        self.headerView?.imageUrl = user.fullAvatar
+        self.headerView?.state = user.state ?? 0
         self.view.setupTableView()
+        self.interactor.fetchOwnedGames(id: user.steamId)
     }
     
-    func show(profile: PlayerSummaries.Response.Player) {
-        self.interactor.fetchOwnedGames()
+    func show(user: User) {
+        self.interactor.fetchOwnedGames(id: user.steamId)
         self.view.setupHeader()
-        self.headerView?.name = profile.personaname
-        self.headerView?.imageUrl = profile.avatarfull
-        self.headerView?.state = profile.personastate
+        self.headerView?.name = user.name
+        self.headerView?.imageUrl = user.fullAvatar
+        self.headerView?.state = user.state ?? 0
         self.view.hideLoginButton()
         self.view.setupTableView()
     }
@@ -55,6 +65,7 @@ class ProfilePresenter: ProfilePresenterProtocol {
     }
     
     func set(tableViewModel: [OwnedGames.Response.Game]?) {
+        self.headerView?.gamesCount = tableViewModel?.count
         self.view.tableViewModel = tableViewModel?.map { GameViewModel(appId: $0.appid,
                                                                        hash: $0.img_logo_url,
                                                                        name: $0.name,
@@ -71,12 +82,17 @@ class ProfilePresenter: ProfilePresenterProtocol {
         self.view.hideLoginButton()
         self.view.hideTableView()
         
-        self.interactor.fetchUser()
+//        self.interactor.fetchUser()
     }
 }
 
 extension ProfilePresenter: LoginDelegate {
-    func finishedAuthorization() {
-        self.interactor.fetchUser()
+    func finishedAuthorization(with id: String) {
+        self.interactor.fetchUser(id: id) { user in
+            if let user = user {
+                self.show(user: user)
+                self.interactor.save(user: user)
+            }
+        }
     }
 }

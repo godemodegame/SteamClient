@@ -5,11 +5,11 @@ protocol LoginPresenterProtocol: class {
     func closeButtonClicked()
     func failConnection()
     func isFetched(url: URL) -> Bool
-    func idFound()
+    func found(id: String)
 }
 
 protocol LoginDelegate {
-    func finishedAuthorization()
+    func finishedAuthorization(with id: String)
 }
 
 final class LoginPresenter: LoginPresenterProtocol {
@@ -32,8 +32,8 @@ final class LoginPresenter: LoginPresenterProtocol {
         self.router.closeCurrentViewController()
     }
     
-    func idFound() {
-        self.delegate?.finishedAuthorization()
+    func found(id: String) {
+        self.delegate?.finishedAuthorization(with: id)
         self.router.closeCurrentViewController()
     }
     

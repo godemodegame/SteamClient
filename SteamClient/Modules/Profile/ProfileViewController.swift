@@ -39,6 +39,7 @@ class ProfileViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: UITableView.Style.grouped)
         view.register(GameTableViewCell.self, forCellReuseIdentifier: "Cell")
+        view.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0)
         view.delegate = self
         view.dataSource = self
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -80,11 +81,11 @@ class ProfileViewController: UIViewController {
         self.presenter.configureUserView()
     }
     
-    init(friend: Friend? = nil) {
+    init(friend: User? = nil) {
         super.init(nibName: nil, bundle: nil)
         self.configurator.configure(with: self)
         if let friend = friend {
-            self.presenter.configureFriendView(profile: friend)
+            self.presenter.configureFriendView(user: friend)
         } else {
             self.presenter.configureUserView()
         }
@@ -100,9 +101,9 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: ProfileViewProtocol {
     func setupBackground() {
         if #available(iOS 13.0, *) {
-            self.view.backgroundColor = UIColor.systemBackground
+            self.view.backgroundColor = .systemBackground
         } else {
-            self.view.backgroundColor = UIColor.white
+            self.view.backgroundColor = .white
         }
     }
     
@@ -143,11 +144,11 @@ extension ProfileViewController: ProfileViewProtocol {
         if #available(iOS 11, *) {
             self.headerView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         } else {
-            self.headerView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: -80).isActive = true
+            self.headerView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 80).isActive = true
         }
         [self.headerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
          self.headerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-         self.headerView.heightAnchor.constraint(equalToConstant: 200)
+         self.headerView.heightAnchor.constraint(equalToConstant: 170)
             ].forEach { $0.isActive = true }
     }
     
