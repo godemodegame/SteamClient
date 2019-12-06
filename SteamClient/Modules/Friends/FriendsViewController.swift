@@ -30,13 +30,9 @@ class FriendsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "friendCell", for: indexPath) as! FriendTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: FriendTableViewCell.reuseIdentifier, for: indexPath) as! FriendTableViewCell
         let friend = viewModel[indexPath.item]
-        cell.namelabel.text = friend.name
-        if let url = friend.littleAvatar {
-            cell.imgView.load(url: url)
-        }
-        cell.state = friend.state ?? 0
+        cell.viewModel = friend
         return cell
     }
     
@@ -54,6 +50,6 @@ class FriendsViewController: UITableViewController {
 
 extension FriendsViewController: FriendsViewProtocol {
     func setupCell() {
-        self.tableView.register(FriendTableViewCell.self, forCellReuseIdentifier: "friendCell")
+        self.tableView.register(FriendTableViewCell.self, forCellReuseIdentifier: FriendTableViewCell.reuseIdentifier)
     }
 }

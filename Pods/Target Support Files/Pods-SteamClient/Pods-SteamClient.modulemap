@@ -1,0 +1,6 @@
+module Pods_SteamClient {
+  umbrella header "Pods-SteamClient-umbrella.h"
+
+  export *
+  module * { export * }
+}

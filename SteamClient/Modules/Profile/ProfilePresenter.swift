@@ -5,8 +5,9 @@ protocol ProfilePresenterProtocol: class {
     func configureFriendView(user: User)
     func setLoginButton()
     func loginButtonTapped()
+    func logoutButtonTapped()
     func show(user: User)
-    func set(tableViewModel: [OwnedGames.Response.Game]?)
+    func set(tableViewModel: [Games.Response.Game]?)
     func gamesFailed()
     func reload()
 }
@@ -52,24 +53,21 @@ class ProfilePresenter: ProfilePresenterProtocol {
         self.headerView?.name = user.name
         self.headerView?.imageUrl = user.fullAvatar
         self.headerView?.state = user.state ?? 0
-        self.view.hideLoginButton()
+        self.view.showLogoutButton()
         self.view.setupTableView()
     }
     
     func setLoginButton() {
-        self.view.setupLoginButton()
+        self.view.showLoginButton()
     }
     
     func loginButtonTapped() {
         self.router.showLoginScreen(delegate: self)
     }
     
-    func set(tableViewModel: [OwnedGames.Response.Game]?) {
+    func set(tableViewModel: [Games.Response.Game]?) {
         self.headerView?.gamesCount = tableViewModel?.count
-        self.view.tableViewModel = tableViewModel?.map { GameViewModel(appId: $0.appid,
-                                                                       hash: $0.img_logo_url,
-                                                                       name: $0.name,
-                                                                       played: $0.playtime_forever)}
+        self.view.tableViewModel = tableViewModel
     }
     
     func gamesFailed() {
@@ -79,10 +77,15 @@ class ProfilePresenter: ProfilePresenterProtocol {
     func reload() {
         self.view.hideFail()
         self.view.hideHeader()
-        self.view.hideLoginButton()
         self.view.hideTableView()
-        
-//        self.interactor.fetchUser()
+    }
+    
+    func logoutButtonTapped() {
+        self.view.hideFail()
+        self.view.hideHeader()
+        self.view.hideTableView()
+        self.view.showLoginButton()
+        self.interactor.clearUser()
     }
 }
 

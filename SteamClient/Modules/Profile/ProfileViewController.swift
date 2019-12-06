@@ -1,10 +1,10 @@
 import UIKit
 
 protocol ProfileViewProtocol: class {
-    var tableViewModel: [GameViewModel]? { get set }
+    var tableViewModel: [OwnedGameViewModel]? { get set }
     func setupBackground()
-    func setupLoginButton()
-    func hideLoginButton()
+    func showLoginButton()
+    func showLogoutButton()
     func setupHeader()
     func hideHeader()
     func setupTableView()
@@ -18,7 +18,7 @@ class ProfileViewController: UIViewController {
     var presenter: ProfilePresenterProtocol!
     let configurator: ProfileConfiguratorProtocol = ProfileConfigurator()
     
-    var tableViewModel: [GameViewModel]? {
+    var tableViewModel: [OwnedGameViewModel]? {
         didSet {
             self.tableView.reloadData()
         }
@@ -27,6 +27,14 @@ class ProfileViewController: UIViewController {
     //MARK: Views
     
     let headerView = ProfileHeaderView()
+    
+    private lazy var logoutButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Logout", for: .normal)
+        button.addTarget(self, action: #selector(self.logoutButtonTapped), for: .touchUpInside)
+        return button
+    }()
     
     private lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
@@ -38,7 +46,7 @@ class ProfileViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: UITableView.Style.grouped)
-        view.register(GameTableViewCell.self, forCellReuseIdentifier: "Cell")
+        view.register(GameTableViewCell.self, forCellReuseIdentifier: GameTableViewCell.reuseIdentifier)
         view.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0)
         view.delegate = self
         view.dataSource = self
@@ -71,6 +79,10 @@ class ProfileViewController: UIViewController {
         self.presenter.loginButtonTapped()
     }
     
+    @objc func logoutButtonTapped() {
+        self.presenter.logoutButtonTapped()
+    }
+    
     @objc func reloadButtonTapped() {
         self.presenter.reload()
     }
@@ -96,7 +108,7 @@ class ProfileViewController: UIViewController {
     }
 }
 
-// MARK: -ProfileViewProtocol
+// MARK: - ProfileViewProtocol
 
 extension ProfileViewController: ProfileViewProtocol {
     func setupBackground() {
@@ -130,7 +142,7 @@ extension ProfileViewController: ProfileViewProtocol {
         [self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
          self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
          self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-         self.tableView.topAnchor.constraint(equalTo: self.headerView.bottomAnchor)
+         self.tableView.topAnchor.constraint(equalTo: self.view.bottomAnchor)
             ].forEach { $0.isActive = true }
     }
     
@@ -140,7 +152,7 @@ extension ProfileViewController: ProfileViewProtocol {
     
     func setupHeader() {
         self.view.addSubview(self.headerView)
-        
+
         if #available(iOS 11, *) {
             self.headerView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         } else {
@@ -156,17 +168,16 @@ extension ProfileViewController: ProfileViewProtocol {
         self.headerView.removeFromSuperview()
     }
     
-    func setupLoginButton() {
-        self.view.addSubview(self.loginButton)
-        [self.loginButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-         self.loginButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-            ].forEach { $0.isActive = true }
+    func showLoginButton() {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: self.loginButton)
     }
     
-    func hideLoginButton() {
-        self.loginButton.removeFromSuperview()
+    func showLogoutButton() {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: self.logoutButton)
     }
 }
+
+// MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -174,13 +185,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! GameTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: GameTableViewCell.reuseIdentifier, for: indexPath) as! GameTableViewCell
         if let viewModel = self.tableViewModel?[indexPath.item] {
-            if let url = viewModel.imageUrl {
-                cell.imgView.load(url: url)
-            }
-            cell.namelabel.text = viewModel.name
-            cell.detaillabel.text = viewModel.playedHours
+            cell.ownedGameViewModel = viewModel
         }
         return cell
     }

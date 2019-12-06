@@ -5,6 +5,7 @@ protocol ProfileInteractorProtocol: class {
     func fetchOwnedGames(id: String)
     func save(user: User)
     func loadUser() -> User?
+    func clearUser()
 }
 
 final class ProfileInteractor: ProfileInteractorProtocol {
@@ -15,6 +16,10 @@ final class ProfileInteractor: ProfileInteractorProtocol {
     
     required init(presenter: ProfilePresenterProtocol) {
         self.presenter = presenter
+    }
+    
+    func clearUser() {
+        self.storageService.deleteUser()
     }
     
     func save(user: User) {

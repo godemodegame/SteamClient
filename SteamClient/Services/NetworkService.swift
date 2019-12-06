@@ -5,6 +5,14 @@ class NetworkService {
     private static let key = "E4CB46E8AD8BC6DD3D87762C8C74B775"
     private let url = "https://api.steampowered.com"
     
+    public func getRecentlyPlayedGames(user id: String, completion: @escaping ([Games.Response.Game]?) -> Void) {
+        let fullUrl = self.url + "/IPlayerService/GetRecentlyPlayedGames/v0001/?key=\(NetworkService.key)&steamid=\(id)&format=json"
+        
+        self.request(url: fullUrl, responseType: Games.self) { games in
+            completion(games?.response.games)
+        }
+    }
+    
     //http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=E4CB46E8AD8BC6DD3D87762C8C74B775&steamid=76561198055671877&relationship=friend
     public func getFriendsList(user id: String, completion: @escaping ([FriendsResponse.FriendsList.Friend]?) -> Void) {
         let fullUrl = self.url + "/ISteamUser/GetFriendList/v0001/?key=\(NetworkService.key)&steamid=\(id)&relationship=friend"
@@ -15,10 +23,10 @@ class NetworkService {
     }
     
     // https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=E4CB46E8AD8BC6DD3D87762C8C74B775&steamid=76561198055671877&format=json&include_appinfo=true
-    public func getOwnedGame(user id: String, completion: @escaping (OwnedGames.Response?) -> Void) {
+    public func getOwnedGame(user id: String, completion: @escaping (Games.Response?) -> Void) {
         let fullUrl = self.url + "/IPlayerService/GetOwnedGames/v0001/?key=\(NetworkService.key)&steamid=\(id)&format=json&include_appinfo=true"
         
-        self.request(url: fullUrl, responseType: OwnedGames.self) { ownedGames in
+        self.request(url: fullUrl, responseType: Games.self) { ownedGames in
             completion(ownedGames?.response)
         }
     }

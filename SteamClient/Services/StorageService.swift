@@ -4,17 +4,17 @@ class StorageService {
     private let userDefaults = UserDefaults.standard
     
     public func save(user: User) {
-        userDefaults.set(try? PropertyListEncoder().encode(user), forKey:"user")
-        //self.userDefaults.setValue(user.toDictionary(), forKey: "user")
+        self.userDefaults.set(try? PropertyListEncoder().encode(user), forKey:"user")
     }
     
     public func loadUser() -> User? {
-        if let data = userDefaults.value(forKey:"user") as? Data {
+        if let data = self.userDefaults.value(forKey:"user") as? Data {
             return try? PropertyListDecoder().decode(User.self, from: data)
         }
-//        if let userDictionary = self.userDefaults.dictionary(forKey: "user") {
-//            return User(from: userDictionary)
-//        }
         return nil
+    }
+    
+    public func deleteUser() {
+        self.userDefaults.set(nil, forKey: "user")
     }
 }
